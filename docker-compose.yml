@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+
+  grpc_user:
+    build:
+      context: ./grpc_user
+    container_name: grpc_user
+    ports:
+      - "50051:50051"
+
+  grpc_order:
+    build:
+      context: ./grpc_order
+    container_name: grpc_order
+    ports:
+      - "50052:50051"
+
+  grpc_review:
+    build:
+      context: ./grpc_review
+    container_name: grpc_review
+    ports:
+      - "50053:50051"
+

@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package grpc;
+
+service User {
+  rpc Create   (NewUserRequest)    returns (NewDataResponse) {}
+  rpc Auth(AuthRequest)  returns (AuthResponse) {}
+}
+
+service Order {
+  rpc Create   (NewOrderRequest)    returns (NewDataResponse) {}
+}
+
+service Review {
+  rpc Create   (NewReviewRequest)    returns (NewDataResponse) {}
+}
+
+message NewOrderRequest {
+  string name = 1;
+  int32 user_id = 2;
+}
+message NewReviewRequest {
+  int32 order_id = 1;
+  string message = 2;
+  int32 rating = 3;
+  int32 user_id = 4;
+}
+message NewUserRequest {
+  string name = 1;
+  string password = 2;
+}
+message AuthRequest {
+  string name = 1;
+  string password = 2;
+}
+message AuthResponse {
+  string message = 1;
+  bool status = 2;
+}
+message NewDataResponse {
+  string message = 1;
+  int32 id = 2;
+  bool status = 3;
+}
+
