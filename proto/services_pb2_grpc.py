@@ -17,7 +17,7 @@ class UserStub(object):
         self.Create = channel.unary_unary(
                 '/grpc.User/Create',
                 request_serializer=services__pb2.NewUserRequest.SerializeToString,
-                response_deserializer=services__pb2.NewDataResponse.FromString,
+                response_deserializer=services__pb2.NewUserResponse.FromString,
                 )
         self.Auth = channel.unary_unary(
                 '/grpc.User/Auth',
@@ -47,7 +47,7 @@ def add_UserServicer_to_server(servicer, server):
             'Create': grpc.unary_unary_rpc_method_handler(
                     servicer.Create,
                     request_deserializer=services__pb2.NewUserRequest.FromString,
-                    response_serializer=services__pb2.NewDataResponse.SerializeToString,
+                    response_serializer=services__pb2.NewUserResponse.SerializeToString,
             ),
             'Auth': grpc.unary_unary_rpc_method_handler(
                     servicer.Auth,
@@ -77,7 +77,7 @@ class User(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/grpc.User/Create',
             services__pb2.NewUserRequest.SerializeToString,
-            services__pb2.NewDataResponse.FromString,
+            services__pb2.NewUserResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -113,12 +113,23 @@ class OrderStub(object):
                 request_serializer=services__pb2.NewOrderRequest.SerializeToString,
                 response_deserializer=services__pb2.NewDataResponse.FromString,
                 )
+        self.Get = channel.unary_unary(
+                '/grpc.Order/Get',
+                request_serializer=services__pb2.GetDataRequest.SerializeToString,
+                response_deserializer=services__pb2.OrderResponse.FromString,
+                )
 
 
 class OrderServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def Create(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Get(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -131,6 +142,11 @@ def add_OrderServicer_to_server(servicer, server):
                     servicer.Create,
                     request_deserializer=services__pb2.NewOrderRequest.FromString,
                     response_serializer=services__pb2.NewDataResponse.SerializeToString,
+            ),
+            'Get': grpc.unary_unary_rpc_method_handler(
+                    servicer.Get,
+                    request_deserializer=services__pb2.GetDataRequest.FromString,
+                    response_serializer=services__pb2.OrderResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -159,6 +175,23 @@ class Order(object):
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
+    @staticmethod
+    def Get(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/grpc.Order/Get',
+            services__pb2.GetDataRequest.SerializeToString,
+            services__pb2.OrderResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
 
 class ReviewStub(object):
     """Missing associated documentation comment in .proto file."""
@@ -174,12 +207,23 @@ class ReviewStub(object):
                 request_serializer=services__pb2.NewReviewRequest.SerializeToString,
                 response_deserializer=services__pb2.NewDataResponse.FromString,
                 )
+        self.Get = channel.unary_unary(
+                '/grpc.Review/Get',
+                request_serializer=services__pb2.GetDataRequest.SerializeToString,
+                response_deserializer=services__pb2.ReviewResponse.FromString,
+                )
 
 
 class ReviewServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def Create(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Get(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -192,6 +236,11 @@ def add_ReviewServicer_to_server(servicer, server):
                     servicer.Create,
                     request_deserializer=services__pb2.NewReviewRequest.FromString,
                     response_serializer=services__pb2.NewDataResponse.SerializeToString,
+            ),
+            'Get': grpc.unary_unary_rpc_method_handler(
+                    servicer.Get,
+                    request_deserializer=services__pb2.GetDataRequest.FromString,
+                    response_serializer=services__pb2.ReviewResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -217,5 +266,22 @@ class Review(object):
         return grpc.experimental.unary_unary(request, target, '/grpc.Review/Create',
             services__pb2.NewReviewRequest.SerializeToString,
             services__pb2.NewDataResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Get(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/grpc.Review/Get',
+            services__pb2.GetDataRequest.SerializeToString,
+            services__pb2.ReviewResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

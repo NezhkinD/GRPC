@@ -5,13 +5,23 @@ import services_pb2
 import services_pb2_grpc
 import random
 
+
 class OrderService(services_pb2_grpc.Order):
     def Create(self, request, context):
         return services_pb2.NewDataResponse(
             message=f"Заказ для пользователя с id {request.user_id} создан",
             id=random.randint(0, 125),
-            status=True
+            status=True,
+            user_id=request.user_id
         )
+
+    def Get(self, request, context):
+        return services_pb2.OrderResponse(
+            name=f"Заказ на доставку товара #{request.id}",
+            user_id=random.randint(0, 125),
+            status="доставлено",
+        )
+
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

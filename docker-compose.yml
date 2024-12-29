@@ -21,4 +21,3 @@ services:
     container_name: grpc_review
     ports:
       - "50053:50051"
-

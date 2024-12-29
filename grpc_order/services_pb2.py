@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0eservices.proto\x12\x04grpc\"0\n\x0fNewOrderRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07user_id\x18\x02 \x01(\x05\"V\n\x10NewReviewRequest\x12\x10\n\x08order_id\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0e\n\x06rating\x18\x03 \x01(\x05\x12\x0f\n\x07user_id\x18\x04 \x01(\x05\"0\n\x0eNewUserRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"-\n\x0b\x41uthRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"/\n\x0c\x41uthResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\x08\">\n\x0fNewDataResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\x05\x12\x0e\n\x06status\x18\x03 \x01(\x08\x32p\n\x04User\x12\x37\n\x06\x43reate\x12\x14.grpc.NewUserRequest\x1a\x15.grpc.NewDataResponse\"\x00\x12/\n\x04\x41uth\x12\x11.grpc.AuthRequest\x1a\x12.grpc.AuthResponse\"\x00\x32\x41\n\x05Order\x12\x38\n\x06\x43reate\x12\x15.grpc.NewOrderRequest\x1a\x15.grpc.NewDataResponse\"\x00\x32\x43\n\x06Review\x12\x39\n\x06\x43reate\x12\x16.grpc.NewReviewRequest\x1a\x15.grpc.NewDataResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0eservices.proto\x12\x04grpc\"V\n\x10NewReviewRequest\x12\x10\n\x08order_id\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0e\n\x06rating\x18\x03 \x01(\x05\x12\x0f\n\x07user_id\x18\x04 \x01(\x05\"T\n\x0eReviewResponse\x12\x10\n\x08order_id\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0e\n\x06rating\x18\x03 \x01(\x05\x12\x0f\n\x07user_id\x18\x04 \x01(\x05\"0\n\x0fNewOrderRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07user_id\x18\x02 \x01(\x05\">\n\rOrderResponse\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07user_id\x18\x02 \x01(\x05\x12\x0e\n\x06status\x18\x03 \x01(\t\"0\n\x0eNewUserRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\">\n\x0fNewUserResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\x05\x12\x0e\n\x06status\x18\x03 \x01(\x08\"-\n\x0b\x41uthRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"/\n\x0c\x41uthResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\x08\"O\n\x0fNewDataResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\x05\x12\x0e\n\x06status\x18\x03 \x01(\x08\x12\x0f\n\x07user_id\x18\x04 \x01(\x05\"\x1c\n\x0eGetDataRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x32p\n\x04User\x12\x37\n\x06\x43reate\x12\x14.grpc.NewUserRequest\x1a\x15.grpc.NewUserResponse\"\x00\x12/\n\x04\x41uth\x12\x11.grpc.AuthRequest\x1a\x12.grpc.AuthResponse\"\x00\x32u\n\x05Order\x12\x38\n\x06\x43reate\x12\x15.grpc.NewOrderRequest\x1a\x15.grpc.NewDataResponse\"\x00\x12\x32\n\x03Get\x12\x14.grpc.GetDataRequest\x1a\x13.grpc.OrderResponse\"\x00\x32x\n\x06Review\x12\x39\n\x06\x43reate\x12\x16.grpc.NewReviewRequest\x1a\x15.grpc.NewDataResponse\"\x00\x12\x33\n\x03Get\x12\x14.grpc.GetDataRequest\x1a\x14.grpc.ReviewResponse\"\x00\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -21,22 +21,30 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'services_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _globals['_NEWORDERREQUEST']._serialized_start=24
-  _globals['_NEWORDERREQUEST']._serialized_end=72
-  _globals['_NEWREVIEWREQUEST']._serialized_start=74
-  _globals['_NEWREVIEWREQUEST']._serialized_end=160
-  _globals['_NEWUSERREQUEST']._serialized_start=162
-  _globals['_NEWUSERREQUEST']._serialized_end=210
-  _globals['_AUTHREQUEST']._serialized_start=212
-  _globals['_AUTHREQUEST']._serialized_end=257
-  _globals['_AUTHRESPONSE']._serialized_start=259
-  _globals['_AUTHRESPONSE']._serialized_end=306
-  _globals['_NEWDATARESPONSE']._serialized_start=308
-  _globals['_NEWDATARESPONSE']._serialized_end=370
-  _globals['_USER']._serialized_start=372
-  _globals['_USER']._serialized_end=484
-  _globals['_ORDER']._serialized_start=486
-  _globals['_ORDER']._serialized_end=551
-  _globals['_REVIEW']._serialized_start=553
-  _globals['_REVIEW']._serialized_end=620
+  _globals['_NEWREVIEWREQUEST']._serialized_start=24
+  _globals['_NEWREVIEWREQUEST']._serialized_end=110
+  _globals['_REVIEWRESPONSE']._serialized_start=112
+  _globals['_REVIEWRESPONSE']._serialized_end=196
+  _globals['_NEWORDERREQUEST']._serialized_start=198
+  _globals['_NEWORDERREQUEST']._serialized_end=246
+  _globals['_ORDERRESPONSE']._serialized_start=248
+  _globals['_ORDERRESPONSE']._serialized_end=310
+  _globals['_NEWUSERREQUEST']._serialized_start=312
+  _globals['_NEWUSERREQUEST']._serialized_end=360
+  _globals['_NEWUSERRESPONSE']._serialized_start=362
+  _globals['_NEWUSERRESPONSE']._serialized_end=424
+  _globals['_AUTHREQUEST']._serialized_start=426
+  _globals['_AUTHREQUEST']._serialized_end=471
+  _globals['_AUTHRESPONSE']._serialized_start=473
+  _globals['_AUTHRESPONSE']._serialized_end=520
+  _globals['_NEWDATARESPONSE']._serialized_start=522
+  _globals['_NEWDATARESPONSE']._serialized_end=601
+  _globals['_GETDATAREQUEST']._serialized_start=603
+  _globals['_GETDATAREQUEST']._serialized_end=631
+  _globals['_USER']._serialized_start=633
+  _globals['_USER']._serialized_end=745
+  _globals['_ORDER']._serialized_start=747
+  _globals['_ORDER']._serialized_end=864
+  _globals['_REVIEW']._serialized_start=866
+  _globals['_REVIEW']._serialized_end=986
 # @@protoc_insertion_point(module_scope)

@@ -1,7 +1,7 @@
 .PHONY: build up down restart build_up dbu recreate_proto clean_proto proto proto_helloworld proto_create docker_fix
 
+dbu: recreate_proto down build_up
 build_up: build up
-dbu: recreate_proto down build up
 recreate_proto: clean_proto proto_create copy_proto
 
 build:
@@ -15,7 +15,6 @@ down:
 
 restart:
 	docker-compose restart
-
 
 copy_proto:
 	cp -rf ./proto/services_pb2.py ./grpc_order/services_pb2.py

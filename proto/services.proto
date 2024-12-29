@@ -3,31 +3,52 @@ syntax = "proto3";
 package grpc;
 
 service User {
-  rpc Create   (NewUserRequest)    returns (NewDataResponse) {}
+  rpc Create   (NewUserRequest)    returns (NewUserResponse) {}
   rpc Auth(AuthRequest)  returns (AuthResponse) {}
 }
 
 service Order {
   rpc Create   (NewOrderRequest)    returns (NewDataResponse) {}
+  rpc Get   (GetDataRequest)    returns (OrderResponse) {}
 }
 
 service Review {
   rpc Create   (NewReviewRequest)    returns (NewDataResponse) {}
+  rpc Get   (GetDataRequest)    returns (ReviewResponse) {}
 }
 
-message NewOrderRequest {
-  string name = 1;
-  int32 user_id = 2;
-}
+
 message NewReviewRequest {
   int32 order_id = 1;
   string message = 2;
   int32 rating = 3;
   int32 user_id = 4;
 }
+message ReviewResponse {
+  int32 order_id = 1;
+  string message = 2;
+  int32 rating = 3;
+  int32 user_id = 4;
+}
+
+message NewOrderRequest {
+  string name = 1;
+  int32 user_id = 2;
+}
+message OrderResponse {
+  string name = 1;
+  int32 user_id = 2;
+  string status = 3;
+}
+
 message NewUserRequest {
   string name = 1;
   string password = 2;
+}
+message NewUserResponse {
+  string message = 1;
+  int32 id = 2;
+  bool status = 3;
 }
 message AuthRequest {
   string name = 1;
@@ -41,5 +62,9 @@ message NewDataResponse {
   string message = 1;
   int32 id = 2;
   bool status = 3;
+  int32 user_id = 4;
+}
+message GetDataRequest {
+  int32 id = 1;
 }
 

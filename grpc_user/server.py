@@ -5,10 +5,11 @@ import services_pb2
 import services_pb2_grpc
 import random
 
+
 class UserService(services_pb2_grpc.User):
     def Create(self, request, context):
         hidePassword = self.hidePassword(request.password)
-        return services_pb2.NewDataResponse(
+        return services_pb2.NewUserResponse(
             message=f"Пользователь, {request.name} и паролем {hidePassword}, успешно зарегистрирован!",
             id=random.randint(1, 9999),
             status=True
